@@ -23,7 +23,6 @@ async def health_check():
 async def chat (payload: ChatRequest, db = Depends(get_db)):
    user_id = payload.user_id
    message = payload.message
-
    # Save the user's message to the database
    user_message = Message(user_id=user_id, role="user", content=message)
    db.add(user_message)

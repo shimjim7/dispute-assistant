@@ -27,3 +27,11 @@ def test_chat_missing_message():
     )
 
     assert response.status_code == 422
+
+def test_chat_message_too_long():
+    response = client.post(
+        "/chat",
+        json={"message": "x" * 10001}
+    )
+
+    assert response.status_code == 422
